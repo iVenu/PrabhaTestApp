@@ -164,10 +164,10 @@ $('#testerInitials').on('change keyup paste', function(){
     isValid(document.getElementById("testerInitials"),document.getElementById("testerInitialsError"),/^[A-Za-z]+$/,"Only alphabets are allowed. Length can be upto 5 characters");
 });
 $('#productionMacroCall').on('change keyup paste', function(){
-    isValid(document.getElementById("productionMacroCall"),document.getElementById("productionMacroCallError"),/^[A-Za-z]*$/,"First character must be an alphabet");
+    isValid(document.getElementById("productionMacroCall"),document.getElementById("productionMacroCallError"),/^[A-Za-z][a-zA-Z0-9_() &.=]+$/,"First character must be an alphabet");
 });
 $('#testMacroCall').on('change keyup paste', function(){
-    isValid(document.getElementById("testMacroCall"),document.getElementById("testMacroCallError"),/^[A-Za-z][a-zA-Z0-9_() ]+$/,"First character must be an alphabet");
+    isValid(document.getElementById("testMacroCall"),document.getElementById("testMacroCallError"),/^[A-Za-z][a-zA-Z0-9_() &.=]+$/,"First character must be an alphabet");
 });
 
 function showDataSetDiv(){
