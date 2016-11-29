@@ -23,12 +23,13 @@
 <body>
 
   <div class="jumbotron text-center">
-    <h1>Add a new module to the output dataset comparison</h1>
-    <p>Enter all the following fields and submit. Then copy all the %let statements in the output box on the right and paste them in run_test module. Use '?' next to each field for all the instructions and an example.</p>
+    <h1>FSRM Output Datasets Comparison</h1>
+	<h2></h2>
+	<p>Submission of this form generates a piece of SAS code which helps in adding a new module to the automation suite.</p>
   </div>
 
 <div class="container" id="addTestDiv">
-  <center style="color:red;align:center">Enter all the following fields and submit. Then copy all the %let statements in the output box on the right and paste them in run_test module.</br> Use '?' next to each field for all the instructions and an example.</center>
+  <left style="color:red;align:left">STEPS:</br>1. Fill in the following fields. Use '?' next to each field for the instructions and an example.</br>2. Submit.</br>3. Copy the SAS code in the output box on the right.</br>4. Paste it in the run_test module, right above the /** Add new module **/ comment.</left>
 <p></p>
   <div class="row">
       <div class="col-sm-7">
@@ -180,7 +181,7 @@ function showDataSetDiv(){
 }
 
 function eachDataSetDiv(i){
-  var dataSetHeading = $('<h4>Date set '+i+'</h4>');
+  var dataSetHeading = $('<h4>Dataset '+i+'</h4>');
   dataSetHeading.appendTo("#dataSetsDiv");
   var dataSetName = $('<div class="form-group">'+
     '<label class="control-label col-sm-4" for="dataSetName'+i+'">Dataset name</label>'+
