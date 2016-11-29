@@ -23,14 +23,14 @@
 <body>
 
   <div class="jumbotron text-center">
-    <h1>FSRM Output Datasets Comparison</h1>
+    <h1 style="color:rgb(0,160,220);">FSRM Output Datasets Comparison</h1>
 	<h2></h2>
-	<p>Submission of this form generates a piece of SAS code which helps in adding a new module to the automation suite.</p>
+	<p style="color:teal;">Submission of this form generates a piece of SAS code which helps in adding a new module to the automation suite.</p>
   </div>
 
 <div class="container" id="addTestDiv">
-  <left style="color:red;align:left">STEPS:</br>1. Fill in the following fields. Use '?' next to each field for the instructions and an example.</br>2. Submit.</br>3. Copy the SAS code in the output box on the right.</br>4. Paste it in the run_test module, right above the /** Add new module **/ comment.</left>
-<p></p>
+  <p style="color:darkred;align:left">STEPS:</br>1. Fill in the following fields. Use '?' next to each field for the instructions and an example.</br>2. Submit.</br>3. Copy the SAS code in the output box on the right.</br>4. Paste it in the run_test module, right above the /** Add new module **/ comment.</p>
+<p></br></p>
   <div class="row">
       <div class="col-sm-7">
 <form class="form-horizontal">
@@ -102,6 +102,7 @@
     <label class="control-label col-sm-4" for="noOfDataSets">Number of datasets to be compared</label>
     <div class="col-sm-8 input-group">
       <select class="form-control" id="noOfDataSets">
+	   <option>0</option>
        <option>1</option>
        <option>2</option>
        <option>3</option>
@@ -134,6 +135,7 @@
   <div class="panel panel-default">
   <div class="panel-heading">Output</div>
   <div class="panel-body">
+	<p id="headingcomment"></p>
     <p id="moduleNameOutput"></p>
     <p id="prodMacroOutput"></p>
     <p id="testMacroOutput"></p>
@@ -141,6 +143,7 @@
     <p id="initialsOutput"></p>
     <p id="dataBaseOutput"></p>
     <p id="propertyOutput"></p>
+    <p id="endcomment"></p>
   </div>
 </div>
 </div>
@@ -321,6 +324,7 @@ function finalOutput(){
   for(var h = 1 ; h <=noOfDataSets ; h++ ){
     datasetFinal = datasetFinal + " "+dataSetNameArray[h]+" ("+listOfVariablesArray[h]+") ("+variablesComparedArray[h]+") ("+filtersArray[h]+") ";
   }
+  document.getElementById("headingcomment").innerHTML = "/*****************************  "+codeName+" - start  *********************/";
   document.getElementById("moduleNameOutput").innerHTML = "%let fsrm_module_"+codeName+" = "+moduleName+" ;";
   document.getElementById("initialsOutput").innerHTML = "%let initials_"+codeName+" = "+testerInitials+" ;";
   document.getElementById("dataBaseOutput").innerHTML = "%let database_"+codeName+" = &jenkins_db.;";
@@ -328,6 +332,7 @@ function finalOutput(){
   document.getElementById("prodMacroOutput").innerHTML = "%let productionmacro_"+codeName+" = '"+productionMacroCall+"';";
   document.getElementById("testMacroOutput").innerHTML = "%let testmacro_"+codeName+" = '"+testMacroCall+"';";
   document.getElementById("dataSetsOutput").innerHTML = "%let datasets_"+codeName+" = '"+datasetFinal+"';";
+  document.getElementById("endcomment").innerHTML = "/*****************************  "+codeName+" - end  ***********************/";
 }
 </script>
 </body>
