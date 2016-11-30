@@ -135,7 +135,7 @@
   <div class="panel panel-default">
   <div class="panel-heading">Output</div>
   <div class="panel-body">
-	<p id="headingcomment"></p>
+	  <p id="headingcomment"></p>
     <p id="moduleNameOutput"></p>
     <p id="prodMacroOutput"></p>
     <p id="testMacroOutput"></p>
@@ -146,6 +146,7 @@
     <p id="endcomment"></p>
   </div>
 </div>
+<button type="button" class="btn btn-info" onClick="CopyClipboard();">Copy</button>
 </div>
 </div>
 </div>
@@ -334,6 +335,19 @@ function finalOutput(){
   document.getElementById("dataSetsOutput").innerHTML = "%let datasets_"+codeName+" = '"+datasetFinal+"';";
   document.getElementById("endcomment").innerHTML = "/*****************************  "+codeName+" - end  ***********************/";
 }
+
+function CopyClipboard(){
+  let t = document.createElement('textarea');
+  t.id = 'temp';
+  t.style.height = 0;
+  document.body.appendChild(t);
+  t.value = $(".panel-body").text();
+  let selector = document.querySelector('#temp');
+  selector.select();
+  document.execCommand('copy');
+  document.body.removeChild(t);
+}
+
 </script>
 </body>
 </html>
